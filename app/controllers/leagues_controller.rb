@@ -17,9 +17,30 @@ class LeaguesController < ApplicationController
   end
 
   def scheduled_matches
+
+    #/leagues/:id/matches/schduled
+
     #find ALL SCHEDULED matches for the league
     #display all the upcoming matches
     #render action: all matches?? -> all_matches view???
+    league = params[:id]
+    url = "https://api.football-data.org/v2/competitions/#{league}/matches?status=SCHEDULED"
+    resp = Faraday.get url do |req|
+      req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
+    end
+    body = JSON.parse(resp.body)
+
+    if resp.success?
+      @matches = body["matches"]
+    else
+      @error = body["meta"]["errorDetail"]
+    end
+
+    respond_to do |format|
+      format.html { render :all_matches}
+      format.json { render json: @resp.body }
+    end
+
   end
 
   def all_matches
