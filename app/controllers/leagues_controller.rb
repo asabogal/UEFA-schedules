@@ -14,6 +14,26 @@ class LeaguesController < ApplicationController
     #find the current matchday for the league
     #display only the most immidiate upcoming matches
     #render action: all matches?? -> all_matches view???
+    league = params[:id]
+    matchday = get_matchday(league)
+   
+    url = "https://api.football-data.org/v2/competitions/#{league}/matches?matchday=#{matchday}"
+    resp = Faraday.get url do |req|
+      req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
+    end
+    body = JSON.parse(resp.body)
+  
+    if resp.success?
+      @matches = body["matches"]
+    else
+      @error = body["meta"]["errorDetail"]
+    end
+
+    respond_to do |format|
+      format.html { render :all_matches}
+      format.json { render json: resp.body }
+    end
+
   end
 
   def scheduled_matches
@@ -47,22 +67,34 @@ class LeaguesController < ApplicationController
     #display all matches
     league = params[:id]
     matchday = params[:matchday]
-    url = "https://api.football-data.org/v2/competitions/#{league}/matches?matchday=#{matchday}"
+    url = "https://api.football-data.org/v2/competitions/#{league}/matches?"
     resp = Faraday.get url do |req|
       req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
     end
     body = JSON.parse(resp.body)
 
     if resp.success?
-      @response = body["matches"]
+      @matches = body["matches"]
     else
-      @response = body["meta"]["errorDetail"]
+      @matches = body["meta"]["errorDetail"]
     end
 
     respond_to do |format|
       format.html { render :all_matches}
       format.json { render json: resp.body }
     end
+  end
+
+  private
+
+  def get_matchday(league)
+    url = "https://api.football-data.org/v2/competitions/#{league}"
+    resp = Faraday.get url do |req|
+      req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
+    end
+    body = JSON.parse(resp.body)
+    @matchday = body["currentSeason"]["currentMatchday"]
+    @matchday
   end
 
 end
