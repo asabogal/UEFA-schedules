@@ -45,6 +45,24 @@ class LeaguesController < ApplicationController
   def all_matches
     #find ALL matches for the league; past and future for the current year
     #display all matches
+    league = params[:id]
+    matchday = params[:matchday]
+    url = "https://api.football-data.org/v2/competitions/#{league}/matches?matchday=#{matchday}"
+    resp = Faraday.get url do |req|
+      req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
+    end
+    body = JSON.parse(resp.body)
+
+    if resp.success?
+      @response = body["matches"]
+    else
+      @response = body["meta"]["errorDetail"]
+    end
+
+    respond_to do |format|
+      format.html { render :all_matches}
+      format.json { render json: resp.body }
+    end
   end
 
 end
