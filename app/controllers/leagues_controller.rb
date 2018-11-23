@@ -17,7 +17,6 @@ class LeaguesController < ApplicationController
   end
 
   def scheduled_matches
-
     #/leagues/:id/matches/schduled
 
     #find ALL SCHEDULED matches for the league
@@ -38,7 +37,7 @@ class LeaguesController < ApplicationController
 
     respond_to do |format|
       format.html { render :all_matches}
-      format.json { render json: @resp.body }
+      format.json { render json: resp.body }
     end
 
   end
