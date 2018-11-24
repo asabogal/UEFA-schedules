@@ -11,90 +11,47 @@ class LeaguesController < ApplicationController
   end
 
   def next_matches
-    #find the current matchday for the league
-    #display only the most immidiate upcoming matches
-    #render action: all matches?? -> all_matches view???
     league = params[:id]
-    matchday = get_matchday(league)
-   
-    url = "https://api.football-data.org/v2/competitions/#{league}/matches?matchday=#{matchday}"
-    resp = Faraday.get url do |req|
-      req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
-    end
-    body = JSON.parse(resp.body)
-  
-    if resp.success?
-      @matches = body["matches"]
-    else
-      @error = body["meta"]["errorDetail"]
-    end
+    matchday = LeagueService.get_matchday(league)
+    token = ENV['AUTH_TOKEN']    
+    query = "matchday=#{matchday}"
+    @matches = LeagueService.get_matches(token, league, query)
+    
+    json = @matches.to_json
 
     respond_to do |format|
       format.html { render :all_matches}
-      format.json { render json: resp.body }
-    end
-
+      format.json { render json: json }
+      end
+    
   end
 
   def scheduled_matches
-    #/leagues/:id/matches/schduled
-
-    #find ALL SCHEDULED matches for the league
-    #display all the upcoming matches
-    #render action: all matches?? -> all_matches view???
+    token = ENV['AUTH_TOKEN']
     league = params[:id]
-    url = "https://api.football-data.org/v2/competitions/#{league}/matches?status=SCHEDULED"
-    resp = Faraday.get url do |req|
-      req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
-    end
-    body = JSON.parse(resp.body)
-
-    if resp.success?
-      @matches = body["matches"]
-    else
-      @error = body["meta"]["errorDetail"]
-    end
+    query = "status=SCHEDULED"
+    @matches = LeagueService.get_matches(token, league, query)
+    
+    json = @matches.to_json
 
     respond_to do |format|
       format.html { render :all_matches}
-      format.json { render json: resp.body }
-    end
-
+      format.json { render json: json }
+      end
   end
 
   def all_matches
-    #find ALL matches for the league; past and future for the current year
-    #display all matches
+    token = ENV['AUTH_TOKEN']
     league = params[:id]
-    matchday = params[:matchday]
-    url = "https://api.football-data.org/v2/competitions/#{league}/matches?"
-    resp = Faraday.get url do |req|
-      req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
-    end
-    body = JSON.parse(resp.body)
+    @matches = LeagueService.get_matches(token, league)
 
-    if resp.success?
-      @matches = body["matches"]
-    else
-      @matches = body["meta"]["errorDetail"]
-    end
+    json = @matches.to_json
 
     respond_to do |format|
       format.html { render :all_matches}
-      format.json { render json: resp.body }
-    end
+      format.json { render json: json }
+      end
   end
 
-  private
-
-  def get_matchday(league)
-    url = "https://api.football-data.org/v2/competitions/#{league}"
-    resp = Faraday.get url do |req|
-      req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
-    end
-    body = JSON.parse(resp.body)
-    @matchday = body["currentSeason"]["currentMatchday"]
-    @matchday
-  end
 
 end
