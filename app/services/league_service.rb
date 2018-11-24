@@ -1,9 +1,26 @@
 class LeagueService
+
+	def self.get_league(id)
+			url = "https://api.football-data.org/v2/competitions/#{id}"
+			resp = Faraday.get url do |req|
+				req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
+			end
+			
+			body = JSON.parse(resp.body)
+
+			if resp.success?
+				@response = body
+				else
+				@response = body["meta"]["errorDetail"]
+				end
+		
+		@response
+	end
 	
-	def self.get_matches(token, league, query="")
+	def self.get_matches(league, query="")
 		url = "https://api.football-data.org/v2/competitions/#{league}/matches?#{query}"
 		resp = Faraday.get url do |req|
-		req.headers['X-Auth-Token'] = token
+		req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
 		end
 	
 		body = JSON.parse(resp.body)

@@ -6,16 +6,13 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    #use a service object to request and find resouce on external API
-    #code service object methods
+   @league = LeagueService.find_league(params[:id])
   end
 
   def next_matches
-    league = params[:id]
-    matchday = LeagueService.get_matchday(league)
-    token = ENV['AUTH_TOKEN']    
+    matchday = LeagueService.get_matchday(params[:id])   
     query = "matchday=#{matchday}"
-    @matches = LeagueService.get_matches(token, league, query)
+    @matches = LeagueService.get_matches(params[:id], query)
     
     json = @matches.to_json
 
@@ -27,10 +24,8 @@ class LeaguesController < ApplicationController
   end
 
   def scheduled_matches
-    token = ENV['AUTH_TOKEN']
-    league = params[:id]
     query = "status=SCHEDULED"
-    @matches = LeagueService.get_matches(token, league, query)
+    @matches = LeagueService.get_matches(params[:id], query)
     
     json = @matches.to_json
 
@@ -41,9 +36,7 @@ class LeaguesController < ApplicationController
   end
 
   def all_matches
-    token = ENV['AUTH_TOKEN']
-    league = params[:id]
-    @matches = LeagueService.get_matches(token, league)
+    @matches = LeagueService.get_matches(params[:id])
 
     json = @matches.to_json
 
