@@ -6,7 +6,13 @@ class LeaguesController < ApplicationController
   end
 
   def show
-   @league = LeagueService.find_league(params[:id])
+    @league = LeagueService.find_league(params[:id])
+    json = @league.to_json
+
+    repond_to do |format|
+      format.html { render :show }
+      format.json { render json: json }
+    end
   end
 
   def teams
