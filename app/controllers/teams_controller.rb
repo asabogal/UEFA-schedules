@@ -1,7 +1,6 @@
 class TeamsController < ApplicationController
-
+  
   def show
-    binding.pry
     @team = TeamService.find_team(params[:id])
     json = @team.to_json
 
