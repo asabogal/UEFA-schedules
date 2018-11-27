@@ -6,7 +6,7 @@ class TeamService
       req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
     end
 
-    body = JSON.parse[resp.body]
+    body = JSON.parse(resp.body)
 
     if resp.success?
       @response = body
