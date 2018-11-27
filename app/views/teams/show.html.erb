@@ -16,7 +16,7 @@
         <td> <strong><%= match["homeTeam"]["name"] %></strong> vs. <strong><%= match["awayTeam"]["name"] %></strong> </td>
         <td> <%= match["score"]["fullTime"]["homeTeam"] %> - <%= match["score"]["fullTime"]["awayTeam"] %> </td>
           <% date = DateTime.parse(match["utcDate"]).in_time_zone('Eastern Time (US & Canada)') %>
-        <td>  <%= date.strftime("%b %e, %l:%M %p") %> </td>
+        <td>  <%= date.strftime("%A, %b %e, %l:%M %p") %> </td>
         <% end %>
       </tr>
       </tbody>
