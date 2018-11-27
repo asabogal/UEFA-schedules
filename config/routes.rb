@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/leagues/:id/matches/all', to: 'leagues#all_matches', as: 'league_all_matches'
   get 'leagues/:id/teams', to: 'leagues#teams', as: 'league_teams'
 
+  get 'teams/:id', to: 'teams#show'
 end
