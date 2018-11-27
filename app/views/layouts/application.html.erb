@@ -10,6 +10,52 @@
   </head>
 
   <body>
-    <%= yield %>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <a class="navbar-brand" href="/">UEFA Schedules</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+          <a class="nav-link" href="#">Today's Matches</a>
+        </li>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Leagues
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">UEFA Champions League</a>
+            <a class="dropdown-item" href="#">English Premier League</a>
+            <a class="dropdown-item" href="#">Spanish La Liga</a>
+            <a class="dropdown-item" href="#">Italian Serie A</a>
+            <a class="dropdown-item" href="#">German Bundesliga</a>
+            <a class="dropdown-item" href="#">French Ligue 1</a>
+            
+        </li>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Top Teams
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Barcelona</a>
+            <a class="dropdown-item" href="#">Real Madrid</a>
+            <a class="dropdown-item" href="#">Manchester United</a>
+            <a class="dropdown-item" href="#">Bayern Munich</a>
+            <a class="dropdown-item" href="#">Juventus</a>
+            <a class="dropdown-item" href="#">PSG</a>
+            <a class="dropdown-item" href="#">Manchester City</a>
+            <a class="dropdown-item" href="#">Atletico Madrid</a>
+            <a class="dropdown-item" href="#">Liverpool</a>
+            <a class="dropdown-item" href="#">Roma</a>
+            <a class="dropdown-item" href="#">Chelsea</a>
+            <a class="dropdown-item" href="#">Arsenal</a>
+            <a class="dropdown-item" href="#">Inter Milan</a>
+        </li>
+      </ul>
+    </nav>
+  <%= yield %>
   </body>
 </html>
