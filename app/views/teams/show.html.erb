@@ -1,1 +1,24 @@
 <h1><%= @team["name"] %></h1> 
+
+</div>
+  <div class="matches-table">
+    <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th class="th-sm"><h3> Match</h3></th>
+        <th class="th-sm"><h3> Score</h3></th>
+        <th class="th-sm"><h3> Time(ET)</h3></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @matches.each do |match| %>
+      <tr>
+        <td> <strong><%= match["homeTeam"]["name"] %></strong> vs. <strong><%= match["awayTeam"]["name"] %></strong> </td>
+        <td> <%= match["score"]["fullTime"]["homeTeam"] %> - <%= match["score"]["fullTime"]["awayTeam"] %> </td>
+          <% date = DateTime.parse(match["utcDate"]).in_time_zone('Eastern Time (US & Canada)') %>
+        <td>  <%= date.strftime("%b %e, %l:%M %p") %> </td>
+        <% end %>
+      </tr>
+      </tbody>
+    </table>
+  </div>
