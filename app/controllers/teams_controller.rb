@@ -1,8 +1,10 @@
 class TeamsController < ApplicationController
-  
+
   def show
     @team = TeamService.find_team(params[:id])
-    json = @team.to_json
+    @matches = TeamService.get_matches(params[:id])
+  
+    json = @matches.to_json
 
     respond_to do |format|
       format.html { render :show }
