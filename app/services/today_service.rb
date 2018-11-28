@@ -1,8 +1,8 @@
 class TodayService
 
-  def self.matches_today
-    url = "https://api.football-data.org/v2/matches"
-    resp = Faraday.ger url do |req|
+  def self.matches_today(query)
+    url = "https://api.football-data.org/v2/matches?#{query}"
+    resp = Faraday.get url do |req|
       req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
     end
 
