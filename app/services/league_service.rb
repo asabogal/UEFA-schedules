@@ -54,8 +54,7 @@ class LeagueService
 
         body = JSON.parse(resp.body)
 
-        @teams = body["teams"]
-        @teams
+       body
       
     end
 
