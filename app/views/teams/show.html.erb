@@ -13,7 +13,8 @@
       <tbody>
       <% @matches.each do |match| %>
       <tr>
-        <td> <strong><%= match["homeTeam"]["name"] %></strong> vs. <strong><%= match["awayTeam"]["name"] %></strong> </td>
+        <td> <a href="/teams/<%=match["homeTeam"]["id"]%>"><%= match["homeTeam"]["name"] %></a> vs. 
+        <a href="/teams/<%=match["awayTeam"]["id"]%>"><%= match["awayTeam"]["name"] %></a> </td>
         <td> <%= match["score"]["fullTime"]["homeTeam"] %> - <%= match["score"]["fullTime"]["awayTeam"] %> </td>
           <% date = DateTime.parse(match["utcDate"]).in_time_zone('Eastern Time (US & Canada)') %>
         <td>  <%= date.strftime("%A, %b %e, %l:%M %p") %> </td>
