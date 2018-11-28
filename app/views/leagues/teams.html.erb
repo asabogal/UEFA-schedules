@@ -1,5 +1,5 @@
 <h1>Show Teams</h1>
 
-<% @teams.each do |team| %>
-  <p> <%= team["name"] %> </p>
+<% @teams.each do |team| %> 
+<p> <a href="/teams/<%=team["id"]%>"><%= team["name"] %> </a> </p>
 <% end %>
