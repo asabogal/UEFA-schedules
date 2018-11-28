@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get 'leagues/:id/teams', to: 'leagues#teams', as: 'league_teams'
 
   get 'teams/:id', to: 'teams#show'
+
+  get '/today', to: 'todays#today'
 end
