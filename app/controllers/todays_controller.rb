@@ -8,7 +8,7 @@ class TodaysController < ApplicationController
     json = @matches.to_json
 
     respond_to do |format|
-      format.html { render "leagues/all_matches" }
+      format.html { render :today }
       format.json { render json: json }
     end
   end
