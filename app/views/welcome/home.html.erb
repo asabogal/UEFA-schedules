@@ -1,6 +1,6 @@
   
   <div class="row">
-   <div class="container text-center bg-light p-3">
+   <div class="container text-center p-3">
     <h1 class="display-2 text-center p-2">UEFA SCHEDULES</h1>
   </div> 
   </div>
@@ -17,28 +17,23 @@
     <div class="container text-center col-8 col-md-4">
       <div class="league-list-home">
         <form action="/leagues/2001/matches/next" method="get">
-          <input type="hidden" name="matchday" value="4">
-          <input class="btn btn-primary league-button btn-block m-1" type="submit" value=" UEFA Champions League">
+          <input class="btn btn-primary league-button btn-block m-1" data-id="2001" type="submit" value=" UEFA Champions League">
         </form>
         <form action="/leagues/2021/matches/next" method="get">
-          <input type="hidden" name="leagueID" value="2021">
-          <input class="btn btn-primary league-button btn-block m-1" type="submit" value="English Premier League">
+          <input class="btn btn-primary league-button btn-block m-1" data-id="2021" type="submit" value="English Premier League">
         </form>
         <form action="/leagues/2014/matches/next" method="get">
-          <input type="hidden" name="leagueID" value="2014">
-          <input class="btn btn-primary league-button btn-block m-1" type="submit" value="Spanish La Liga">
+          <input class="btn btn-primary league-button btn-block m-1" data-id="2014" type="submit" value="Spanish Primera Division">
         </form>
         <form action="/leagues/2019/matches/next" method="get">
-          <input type="hidden" name="leagueID" value="2019">
-          <input class="btn btn-primary league-button btn-block m-1" type="submit" value="Italian Seria A">
+          <input class="btn btn-primary league-button btn-block m-1" data-id="2019" type="submit" value="Italian Seria A">
         </form>
         <form action="/leagues/2002/matches/next" method="get">
-          <input type="hidden" name="leagueID" value="2002">
-          <input class="btn btn-primary league-button btn-block m-1" type="submit" value="German Bundesliga">
+          <input class="btn btn-primary league-button btn-block m-1" data-id="2002" type="submit" value="German Bundesliga">
         </form>
         <form action="/leagues/2015/matches/next" method="get">
-          <input type="hidden" name="leagueID" value="2015">
-          <input class="btn btn-primary league-button btn-block m-1" type="submit" value="French Ligue 1">
+         
+          <input class="btn btn-primary league-button btn-block m-1" data-id="2015" type="submit" value="French Ligue 1">
         </form>
         
       </div>
