@@ -46,17 +46,17 @@ class LeagueService
   #   @matchday
   #   end
 
-    # def self.get_teams(league)
-    #   url = "https://api.football-data.org/v2/competitions/#{league}/teams"
-    #   resp = Faraday.get url do |req|
-    #     req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
-    #   end
+    def self.get_teams(league)
+      url = "https://api.football-data.org/v2/competitions/#{league}/teams"
+      resp = Faraday.get url do |req|
+        req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
+      end
 
-    #     body = JSON.parse(resp.body)
+        body = JSON.parse(resp.body)
 
-    #     @teams = body["teams"]
-    #     @teams
+        @teams = body["teams"]
+        @teams
       
-    # end
+    end
 
 end
