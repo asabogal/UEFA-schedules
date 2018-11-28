@@ -26,6 +26,7 @@ class LeaguesController < ApplicationController
   end
 
   def next_matches
+    @league_name = LeagueService.get_league_name(params[:id])
     matchday = LeagueService.get_matchday(params[:id])   
     query = "matchday=#{matchday}"
     @matches = LeagueService.get_matches(params[:id], query)
@@ -39,6 +40,7 @@ class LeaguesController < ApplicationController
   end
 
   def scheduled_matches
+    @league_name = LeagueService.get_league_name(params[:id])
     query = "status=SCHEDULED"
     @matches = LeagueService.get_matches(params[:id], query)
     
@@ -51,6 +53,7 @@ class LeaguesController < ApplicationController
   end
 
   def all_matches
+    @league_name = LeagueService.get_league_name(params[:id])
     @matches = LeagueService.get_matches(params[:id])
 
     json = @matches.to_json

@@ -34,6 +34,18 @@ class LeagueService
     @response
   end
 
+  def self.get_league_name(league)
+    url = "https://api.football-data.org/v2/competitions/#{league}"
+    resp = Faraday.get url do |req|
+      req.headers['X-Auth-Token'] = ENV['AUTH_TOKEN']
+    end
+
+    body = JSON.parse(resp.body)
+
+    league_name = body["name"]
+    league_name
+    end
+
   def self.get_matchday(league)
     url = "https://api.football-data.org/v2/competitions/#{league}"
     resp = Faraday.get url do |req|
