@@ -9,7 +9,7 @@ class LeaguesController < ApplicationController
     @league = LeagueService.find_league(params[:id])
     json = @league.to_json
 
-    repond_to do |format|
+    respond_to do |format|
       format.html { render :show }
       format.json { render json: json }
     end
@@ -26,9 +26,10 @@ class LeaguesController < ApplicationController
   end
 
   def next_matches
-    @league_name = LeagueService.get_league_name(params[:id])
-    matchday = LeagueService.get_matchday(params[:id])   
+    league = LeagueService.find_league(params[:id])
+    matchday = league["currentSeason"]["currentMatchday"]  
     query = "matchday=#{matchday}"
+    @league_name = league["name"]
     @matches = LeagueService.get_matches(params[:id], query)
     
     json = @matches.to_json
@@ -40,8 +41,9 @@ class LeaguesController < ApplicationController
   end
 
   def scheduled_matches
-    @league_name = LeagueService.get_league_name(params[:id])
+    league = LeagueService.find_league(params[:id])
     query = "status=SCHEDULED"
+    @league_name = league["name"]
     @matches = LeagueService.get_matches(params[:id], query)
     
     json = @matches.to_json
@@ -53,7 +55,8 @@ class LeaguesController < ApplicationController
   end
 
   def all_matches
-    @league_name = LeagueService.get_league_name(params[:id])
+    league = LeagueService.find_league(params[:id])
+    @league_name = league["name"]
     @matches = LeagueService.get_matches(params[:id])
 
     json = @matches.to_json
