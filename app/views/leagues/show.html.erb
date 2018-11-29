@@ -1,3 +1,18 @@
-<div class="league-container">
-<h1> <%= @league["name"] %> </h1>
+  <div class="row">
+   <div class="container text-center bg-light p-3">
+    <h1 class="display-2 text-center p-2"><%= @league["name"] %></h1>
+  </div> 
+  </div>
+
+<div class="row p-5">
+    <div class="container text-center col-8 col-md-4">
+      <a class="btn btn-primary btn-block btn-lg m-1" href="/leagues/<%= @league["id"]%>/matches/scheduled" role="button">Scheduled Matches</a>
+      <a class="btn btn-primary btn-block btn-lg m-1" href="/leagues/<%= @league["id"]%>/teams" role="button">League Teams</a>
+    </div>
+</div>
+
+<div class="league-matches">
+</div>
+
+<div class="league-teams">
 </div>
