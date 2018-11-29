@@ -28,7 +28,12 @@ class LeaguesController < ApplicationController
 
   def current_matches
     @league = LeagueService.find_league(params[:id])
-    @matchday = @league["currentSeason"]["currentMatchday"] 
+      if params[:matchday]
+        @matchday = params[:matchday].to_i
+      else
+        @matchday = @league["currentSeason"]["currentMatchday"] 
+      end
+     
     @query = "matchday=#{@matchday}"
     @league_name = @league["name"]
     @matches = LeagueService.get_matches(params[:id], @query)
@@ -41,35 +46,6 @@ class LeaguesController < ApplicationController
       end
   end
 
-  def previous_matches
-    @league = LeagueService.find_league(params[:id])
-    @matchday = @league["currentSeason"]["currentMatchday"] - 1
-    @query = "matchday=#{@matchday}"
-    @league_name = @league["name"]
-    @matches = LeagueService.get_matches(params[:id], @query)
-   
-    json = @matches.to_json
-
-    respond_to do |format|
-      format.html { render :current_matches}
-      format.json { render json: json }
-      end
-  end
-
-  def next_matches
-    @league = LeagueService.find_league(params[:id])
-    @matchday = @league["currentSeason"]["currentMatchday"] + 1
-    @query = "matchday=#{@matchday}"
-    @league_name = @league["name"]
-    @matches = LeagueService.get_matches(params[:id], @query)
-   
-    json = @matches.to_json
-
-    respond_to do |format|
-      format.html { render :current_matches}
-      format.json { render json: json }
-      end
-  end
 
   def scheduled_matches
     league = LeagueService.find_league(params[:id])
