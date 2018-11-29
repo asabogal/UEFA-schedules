@@ -28,7 +28,7 @@ class LeaguesController < ApplicationController
 
   def next_matches
     league = LeagueService.find_league(params[:id])
-    matchday = league["currentSeason"]["currentMatchday"]  
+    matchday = league["currentSeason"]["currentMatchday"] 
     query = "matchday=#{matchday}"
     @league_name = league["name"]
     @matches = LeagueService.get_matches(params[:id], query)
