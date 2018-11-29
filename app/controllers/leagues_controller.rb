@@ -36,7 +36,7 @@ class LeaguesController < ApplicationController
     json = @matches.to_json
 
     respond_to do |format|
-      format.html { render :all_matches}
+      format.html { render :next_matches}
       format.json { render json: json }
       end
   end
@@ -50,7 +50,7 @@ class LeaguesController < ApplicationController
     json = @matches.to_json
 
     respond_to do |format|
-      format.html { render :all_matches}
+      format.html { render :scheduled_matches}
       format.json { render json: json }
       end
   end
