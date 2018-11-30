@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   get '/today', to: 'todays#today'
 
-  resources :reviews, only: [:show, :create]
+  resources :reviews, only: [:index, :create]
 end
