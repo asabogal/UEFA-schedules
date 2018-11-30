@@ -1,0 +1,27 @@
+
+<div class="container"> 
+  <div class="row"> 
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <h1 class="text-center">Add Review</h1>  
+      <div class="form-group">
+        <%= form_for @review do |f| %>
+        
+          <%= f.collection_select :rating, [1, 2, 3, 4, 5], :to_i, :to_i, {:prompt => "Rate App:"}, class: "form-control" %> <br>
+          <%= f.label :comment, "Comments:"  %>
+          <%= f.text_area :comment, maxlength: 150, class: "form-control" %><br>
+          <%= f.label :reviewer, "Your Name:" %> <br>
+          <%= f.text_field :reviewer, class: "form-control" %>
+          <br>
+          <%= f.submit "Review", class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <h1 class="text-center">Reviews</h1>  
+      <div class="review-list">
+      </div>
+    </div> 
+  </div>   
+</div>
+
