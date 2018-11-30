@@ -19,9 +19,20 @@
 
     <div class="col-sm-6 col-md-6 col-lg-6">
       <h1 class="text-center">Reviews</h1>  
-      <div class="review-list">
-      </div>
+      <div class="container">
+        <div id="review-list">
+          <% @reviews.each do |review| %>
+          <div class="review-container bg-light">
+            <div class="star-rating" data-score=<%= review["rating"] %>></div><br>
+            <p> <%= review["comment"] %> </p>
+              <em> Reviewer: <%= review["reviewer"] %> </em>
+            </div>
+            <br></br>
+          <% end %>
+        </div>
+       </div> 
     </div> 
   </div>   
 </div>
 
+<%= render partial: 'reviews/script' %>
