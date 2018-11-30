@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get 'teams/:id', to: 'teams#show'
 
   get '/today', to: 'todays#today'
+
+  resources :reviews, only: [:show, :create]
 end
