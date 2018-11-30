@@ -8,8 +8,9 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
       if @review.save
-        flash[:success] = "Review successfuly created!"
-        redirect_to "/reviews"
+        json = @review.to_json
+        
+        render json: json, status: 201
       else
         flash.now[:message] = "<strong>Please try again. There were some errors:</strong><br>".html_safe + @review.errors.full_messages.join("<br/>").html_safe
         render :index
