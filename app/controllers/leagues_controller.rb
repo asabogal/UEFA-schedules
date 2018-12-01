@@ -16,9 +16,11 @@ class LeaguesController < ApplicationController
   end
 
   def teams
-    @teams = LeagueService.get_teams(params[:id])["teams"]
-    @league_name = LeagueService.get_teams(params[:id])["competition"]["name"]
-    json = @teams.to_json
+    league_data = LeagueService.get_teams(params[:id])
+    @league_name = league_data["competition"]["name"]
+    @teams = league_data["teams"]
+ 
+    json = league_data.to_json
     
     respond_to do |format|
       format.html { render :teams }
@@ -38,7 +40,7 @@ class LeaguesController < ApplicationController
     @league_name = @league["name"]
     @matches = LeagueService.get_matches(params[:id], @query)
    
-    json = @matches.to_json
+    json = @league.to_json
 
     respond_to do |format|
       format.html { render :current_matches}
@@ -48,12 +50,12 @@ class LeaguesController < ApplicationController
 
 
   def scheduled_matches
-    league = LeagueService.find_league(params[:id])
+    @league = LeagueService.find_league(params[:id])
     query = "status=SCHEDULED"
-    @league_name = league["name"]
+    @league_name = @league["name"]
     @matches = LeagueService.get_matches(params[:id], query)
     
-    json = @matches.to_json
+    json = @league.to_json
 
     respond_to do |format|
       format.html { render :scheduled_matches}
@@ -62,11 +64,11 @@ class LeaguesController < ApplicationController
   end
 
   def all_matches
-    league = LeagueService.find_league(params[:id])
-    @league_name = league["name"]
+    @league = LeagueService.find_league(params[:id])
+    @league_name = @league["name"]
     @matches = LeagueService.get_matches(params[:id])
 
-    json = @matches.to_json
+    json = @league.to_json
 
     respond_to do |format|
       format.html { render :all_matches}
