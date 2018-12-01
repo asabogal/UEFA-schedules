@@ -5,7 +5,8 @@ $(function(){
 });
 
 function nextPagination(){
-$('.page-link.next').on('click', function(e){
+$('#next-page').on('click', function(e){
+  debugger
   e.preventDefault()
 
     let leagueID = parseInt(this.dataset.id)
@@ -18,7 +19,7 @@ $('.page-link.next').on('click', function(e){
 };
 
 function previousPagination(){
-  $('.page-link.previous').on('click', function(e){
+  $('#previous-page').on('click', function(e){
     e.preventDefault()
     
     let leagueID = parseInt(this.dataset.id)
