@@ -33,19 +33,7 @@ function getReviews(){
       setStars()
     })
   });
-
 };
-
-// function renderData(data){
-
-//   let html = `<div class="review-container bg-light">
-//   <div class="star-rating" data-score=${data.rating}></div><br>
-//   <p> ${data.comment} </p>
-//     <em> Reviewer: ${data.reviewer} </em>
-//   </div>
-//   <br></br`
-//   return html
-// };
 
 function setStars(){
   $('.star-rating').raty({
@@ -57,9 +45,16 @@ function setStars(){
     });
   };  
 
- 
+// function renderData(data){
 
-
+//   let html = `<div class="review-container bg-light">
+//   <div class="star-rating" data-score=${data.rating}></div><br>
+//   <p> ${data.comment} </p>
+//     <em> Reviewer: ${data.reviewer} </em>
+//   </div>
+//   <br></br`
+//   return html
+// };
 
 // $.ajax({
 //   type: "POST",
