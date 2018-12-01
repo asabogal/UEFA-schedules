@@ -1,18 +1,15 @@
 
-// $(function(){
-//   showMatches()
+$(function(){
+  showMatches()
+})
 
-// })
 
-
-// function showMatches(){
-//   $('.btn.btn-primary.league-button').on('click', function(e){
-//     e.preventDefault()
-//       $('.next-matches').load(`/leagues/${this.dataset.id}/matches/next .matches-table`)
-//     });
-
-//     //write this with $.ajax !!
-// };
+function showMatches(){
+  $('.btn.btn-primary.league-button').on('click', function(e){
+    e.preventDefault()
+      $('.current-matches').load(`/leagues/${this.dataset.id}/matches/current .matches-table`)
+    });
+};
 
 
 // function showMatches(){
