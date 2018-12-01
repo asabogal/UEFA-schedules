@@ -1,9 +1,9 @@
 class TodaysController < ApplicationController
 
   def today
-    today = DateTime.now.strftime("%Y-%m-%e")
-    query = "dateFrom=#{today}&dateTo=#{today}"
-    @matches = TodayService.matches_today(query)["matches"]
+    today = DateTime.now.strftime("%Y-%e-%m")
+    query = "#{today}"
+    @matches = TodayService.matches_today(query)
 
     json = @matches.to_json
 

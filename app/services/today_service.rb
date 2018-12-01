@@ -8,7 +8,13 @@ class TodayService
 
     body = JSON.parse(resp.body)
 
-    body
+    if resp.success?
+      @response = body["matches"]
+      else
+      @response = body["meta"]["errorDetail"]
+    end
+    @response
+
 
   end
 
