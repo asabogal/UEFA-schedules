@@ -1,6 +1,7 @@
 
 $(function(){
   showMatches()
+  changeBtn()
 })
 
 
@@ -10,6 +11,13 @@ function showMatches(){
       $('.current-matches').load(`/leagues/${this.dataset.id}/matches/current .matches-table`)
     });
 };
+
+function changeBtn(){
+  $('.btn.btn-primary').click(function(){
+    $('.btn.btn-primary').removeClass("active");
+    $(this).addClass("active");
+  });
+}
 
 
 // function showMatches(){
