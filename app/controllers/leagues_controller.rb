@@ -55,7 +55,7 @@ class LeaguesController < ApplicationController
     @league_name = @league["name"]
     @matches = LeagueService.get_matches(params[:id], query)
     
-    json = @league.to_json
+    json = @matches.to_json
 
     respond_to do |format|
       format.html { render :scheduled_matches}
@@ -68,7 +68,7 @@ class LeaguesController < ApplicationController
     @league_name = @league["name"]
     @matches = LeagueService.get_matches(params[:id])
 
-    json = @league.to_json
+    json = @matches.to_json
 
     respond_to do |format|
       format.html { render :all_matches}
