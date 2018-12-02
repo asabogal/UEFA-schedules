@@ -33,8 +33,15 @@ $(function(){
       this.matches.map(match => { 
         matchesRow += `<tr>`
         matchesRow += `<td> <a href="/teams/${match.homeTeam.id}">${match.homeTeam.name}</a> vs. <a href="/teams/${match.awayTeam.id}">${match.awayTeam.name}</a> </td>`
+          if (match.score.fullTime.homeTeam === null){
+            match.score.fullTime.homeTeam = ""
+          }
+          if  (match.score.fullTime.awayTeam === null){
+            match.score.fullTime.awayTeam = ""
+          }
         matchesRow += `<td>${match.score.fullTime.homeTeam} - ${match.score.fullTime.awayTeam} </td>`
-        matchesRow += `<td>${match.utcDate} </td>`
+          let date = moment(match.utcDate).format("dddd, MMM D, h:mm A")
+        matchesRow += `<td>${date} </td>`
         matchesRow += `<td>${match.status}</td>`
         matchesRow += `</tr>` });
   
@@ -81,20 +88,3 @@ $(function(){
 
 
   //**BUILD -> class/instance method to format matchDate
-
-//#getScheduledMatches
-  //ajax get json request to .../scheduled.(json?)  
-  ////instantiate match object to get matches array from response
-
-
- //#Match.prototype.tableHTML
-// make table template and uses Matches class attributes to populate
-//templeate
-
-//#Match.renderAllMatches
-//uses the above methods to append the return to the page div
-
-//#Match.renderScheduledMatches
-//uses the above methods to append the return to the page div
-
-
