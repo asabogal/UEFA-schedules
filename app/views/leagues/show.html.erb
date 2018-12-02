@@ -6,13 +6,17 @@
 
 <div class="row p-5">
     <div class="container text-center col-8 col-md-4">
-      <a class="btn btn-primary btn-block btn-lg m-1" href="/leagues/<%= @league["id"]%>/matches/scheduled" role="button">Scheduled Matches</a>
+     <a class="btn btn-primary league-button btn-block btn-lg m-1" data-id=<%= @league["id"]%> href="/leagues/<%= @league["id"]%>/matches/current" role="button">Current Matches</a>
+      <a id="scheduled-matches" class="btn btn-primary btn-block btn-lg m-1" data-id=<%= @league["id"]%> href="/leagues/<%= @league["id"]%>/matches/scheduled" role="button">Scheduled Matches</a>
+      <a id="all-matches" class="btn btn-primary btn-block btn-lg m-1" data-id=<%= @league["id"]%> href="/leagues/<%= @league["id"]%>/matches/all" role="button">All Matches</a>
       <a class="btn btn-primary btn-block btn-lg m-1" href="/leagues/<%= @league["id"]%>/teams" role="button">League Teams</a>
     </div>
 </div>
 
-<div class="league-matches">
+<div class="container p-5">
+  <div class="current-matches">
+  </div>
+  <div id="js-table">
+  </div>
 </div>
 
-<div class="league-teams">
-</div>
