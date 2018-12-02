@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap
+//= require moment
 //= require rails-ujs
 //= require activestorage
 //= require_tree .

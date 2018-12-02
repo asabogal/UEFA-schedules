@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'faraday'
 
+gem 'momentjs-rails'
+
 gem 'pry'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
