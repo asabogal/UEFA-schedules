@@ -11,7 +11,7 @@ class TodayService
     if resp.success?
       @response = body["matches"]
       else
-      @response = body["meta"]["errorDetail"]
+      @response = "ERRORS"
     end
     @response
 

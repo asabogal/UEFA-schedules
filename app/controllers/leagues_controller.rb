@@ -45,7 +45,10 @@ class LeaguesController < ApplicationController
           format.json { render json: json }
           end
         else
-        render json: {status: "error", code: 3000, message: "Too many requests. Please try again in one minute"}
+          respond_to do |format|
+            format.html { render "welcome/errors", layout: false }
+            format.json { render json: {status: "error", code: 429, message: "Too many requests. Please try again in one minute"} }
+            end
       end 
   end
 
@@ -62,7 +65,10 @@ class LeaguesController < ApplicationController
         format.json { render json: json }
         end
       else
-        render json: {status: "error", code: 3000, message: "Too many requests. Please try again in one minute"}
+        respond_to do |format|
+          format.html { render "welcome/errors", layout: false }
+          format.json { render json: {status: "error", code: 429, message: "Too many requests. Please try again in one minute"} }
+          end
       end 
   end
 
@@ -77,7 +83,10 @@ class LeaguesController < ApplicationController
         format.json { render json: json }
         end
       else
-        render json: {status: "error", code: 3000, message: "Too many requests. Please try again in one minute"}
+        respond_to do |format|
+          format.html { render "welcome/errors", layout: false }
+          format.json { render json: {status: "error", code: 429, message: "Too many requests. Please try again in one minute"} }
+          end
       end 
   end
 
