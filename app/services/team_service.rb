@@ -11,7 +11,7 @@ class TeamService
     if resp.success?
       @response = body
     else
-      @response = body["meta"]["errorDetails"]
+      @response = "ERRORS"
     end
 
     @response
@@ -28,7 +28,7 @@ class TeamService
     if resp.success?
       @response = body["matches"]
     else
-      @response = body["meta"]["errorDetails"]
+      @response = "ERRORS"
     end
 
     @response
