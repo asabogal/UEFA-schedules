@@ -35,17 +35,18 @@ class LeaguesController < ApplicationController
       else
         @matchday = @league["currentSeason"]["currentMatchday"] 
       end
-     
-    @query = "matchday=#{@matchday}"
-    @league_name = @league["name"]
-    @matches = LeagueService.get_matches(params[:id], @query)
-   
-    json = @league.to_json
-
-    respond_to do |format|
-      format.html { render :current_matches}
-      format.json { render json: json }
-      end
+      @query = "matchday=#{@matchday}"
+      @league_name = @league["name"]
+      @matches = LeagueService.get_matches(params[:id], @query)
+        if @matches != "ERRORS"
+          json = @league.to_json
+          respond_to do |format|
+          format.html { render :current_matches}
+          format.json { render json: json }
+          end
+        else
+        render json: {status: "error", code: 3000, message: "Too many requests. Please try again in one minute"}
+      end 
   end
 
 
@@ -54,26 +55,30 @@ class LeaguesController < ApplicationController
     query = "status=SCHEDULED"
     @league_name = @league["name"]
     @matches = LeagueService.get_matches(params[:id], query)
-    
-    json = @matches.to_json
-
-    respond_to do |format|
-      format.html { render :scheduled_matches}
-      format.json { render json: json }
-      end
+      if @matches != "ERRORS"
+        json = @matches.to_json
+        respond_to do |format|
+        format.html { render :scheduled_matches}
+        format.json { render json: json }
+        end
+      else
+        render json: {status: "error", code: 3000, message: "Too many requests. Please try again in one minute"}
+      end 
   end
 
   def all_matches
     @league = LeagueService.find_league(params[:id])
     @league_name = @league["name"]
     @matches = LeagueService.get_matches(params[:id])
-
-    json = @matches.to_json
-
-    respond_to do |format|
-      format.html { render :all_matches}
-      format.json { render json: json }
-      end
+      if @matches != "ERRORS  "
+        json = @matches.to_json
+        respond_to do |format|
+        format.html { render :all_matches}
+        format.json { render json: json }
+        end
+      else
+        render json: {status: "error", code: 3000, message: "Too many requests. Please try again in one minute"}
+      end 
   end
 
 

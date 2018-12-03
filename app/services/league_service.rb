@@ -11,7 +11,7 @@ class LeagueService
     if resp.success?
       @response = body
      else
-      @response = body["meta"]["errorDetail"]
+      @response = "ERRORS"
     end
     @response
 
@@ -28,7 +28,7 @@ class LeagueService
     if resp.success?
       @response = body["matches"]
       else
-      @response = body["meta"]["errorDetail"]
+      @response = "ERRORS"
     end
     @response
   end
@@ -45,7 +45,7 @@ class LeagueService
       if resp.success?
         @response = body
         else
-        @response = body["meta"]["errorDetail"]
+        @response = "ERRORS"
       end
       @response
     end
