@@ -11,7 +11,6 @@
 - [X] At least one of the JS Model Objects must have a method on the prototype.
 
 
-
 # Project Repo Specs:
 Read Me file contains:
 

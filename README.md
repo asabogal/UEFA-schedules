@@ -8,6 +8,7 @@ This app utilizes data from an external API and processes this data on the RoR b
 
 There is a limit of 10 requests per minute.
 
+
 ## Installation
 
 -- Must have Rails installed! --
