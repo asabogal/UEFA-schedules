@@ -20,7 +20,7 @@ Review.prototype.renderHTML = function(){
   <br></br`
 };
 
-function getReviews(){
+let getReviews = () => {
   $("#new_review").on('submit', function(e){
     e.preventDefault()
     let values = $(this).serialize()
@@ -35,7 +35,7 @@ function getReviews(){
   });
 };
 
-function setStars(){
+let setStars = () => {
   $('.star-rating').raty({
     path: '/assets/',
     readOnly: true,
@@ -45,22 +45,3 @@ function setStars(){
     });
   };  
 
-// function renderData(data){
-
-//   let html = `<div class="review-container bg-light">
-//   <div class="star-rating" data-score=${data.rating}></div><br>
-//   <p> ${data.comment} </p>
-//     <em> Reviewer: ${data.reviewer} </em>
-//   </div>
-//   <br></br`
-//   return html
-// };
-
-// $.ajax({
-//   type: "POST",
-//   url: this.action,
-//   data: $(this).serialize(),
-//   success: function(response){
-//     console.log(response)
-//   }
-// });

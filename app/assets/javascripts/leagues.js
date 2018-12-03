@@ -4,9 +4,8 @@ $(function(){
 
 });
 
-function nextPagination(){
+let nextPagination = () => {
 $('#next-page').on('click', function(e){
-  debugger
   e.preventDefault()
 
     let leagueID = parseInt(this.dataset.id)
@@ -18,7 +17,7 @@ $('#next-page').on('click', function(e){
   })
 };
 
-function previousPagination(){
+let previousPagination = () => {
   $('#previous-page').on('click', function(e){
     e.preventDefault()
     

@@ -52,7 +52,7 @@ $(function(){
   //end class
   };
 
-  function getAllMatches(){
+  let getAllMatches = () => {
     $('#all-matches').on('click', function(e){
       e.preventDefault()
       let leagueId = $("#all-matches").attr("data-id")
@@ -68,7 +68,7 @@ $(function(){
     })
   };
 
-  function getScheduledMatches(){
+  let getScheduledMatches = () => {
     $('#scheduled-matches').on('click', function(e){
       e.preventDefault()
       let leagueId = $("#scheduled-matches").attr("data-id")
@@ -84,7 +84,3 @@ $(function(){
       })
     })
   };
-
-
-
-  //**BUILD -> class/instance method to format matchDate
