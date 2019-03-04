@@ -15,6 +15,7 @@ class TodaysController < ApplicationController
         format.html { render "welcome/errors", layout: false }
         format.json { render json: {status: "error", code: 429, message: "Too many requests. Please try again in one minute"} }
       end
+    end
   end
 
 end

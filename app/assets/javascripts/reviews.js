@@ -9,16 +9,18 @@ class Review {
     this.comment = data.comment
     this.reviewer = data.reviewer
   }
+  
+  renderHTML () {
+    return `<div class="review-container bg-light">
+    <div class="star-rating" data-score=${this.rating}></div><br>
+    <p> ${this.comment} </p>
+      <em> Reviewer: ${this.reviewer} </em>
+    </div>
+    <br></br`
+  };
+
 }
 
-Review.prototype.renderHTML = function(){
-  return `<div class="review-container bg-light">
-  <div class="star-rating" data-score=${this.rating}></div><br>
-  <p> ${this.comment} </p>
-    <em> Reviewer: ${this.reviewer} </em>
-  </div>
-  <br></br`
-};
 
 let getReviews = () => {
   $("#new_review").on('submit', function(e){
