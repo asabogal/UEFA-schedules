@@ -6,17 +6,81 @@
 .btn:focus {
   border-color: rgb(0, 255, 242);
   border-width: thin
-}
+};
 
 .card-img {
   display: block;
   width: 100%;
   height: 180px;
   border-radius: calc(0.25rem - 1px);
+};
+
+.card-container {
+  display: grid;
+  grid-template-columns: 16% 16% 16% 16% 16% 16%;
+  justify-items: center;
+  justify-content: center;
+  grid-column-gap: 20px;
+  padding: 40px;
+};
+
+.league-card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  text-align: center;
+  background-color: #f8f9fa;
+  padding: 10px;
+};
+
+.league-card:hover {
+  box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
 }
+
+.card-heading {
+  padding-top: 20px;
+  font-weight: 400;
+  font-size: 20px;
+};
 
 btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #044563;
   border-color: #005cbf;
+};
+
+// @media all and (max-width: 995px) {
+//   .card-container {
+//     display: grid;
+//     grid-template-columns: 33% 33% 33%;
+//     grid-gap: 1em;
+//     justify-content: center;
+//     padding-left: 30px;
+//   };
+// }
+
+@media all and (max-width: 995px) and (min-width: 650px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-gap: 1em;
+    justify-content: center
+  };
+}
+
+@media all and (max-width: 650px) and (min-width: 450px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 1em;
+    justify-content: center;
+  };
+}
+
+@media all and (max-width: 450px){
+  .card-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 1em;
+    justify-content: center
+  };
 }
