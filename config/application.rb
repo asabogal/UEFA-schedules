@@ -10,6 +10,8 @@ Dotenv::Railtie.load
 
 HOSTNAME = ENV['HOSTNAME']
 
+config.assets.initialize_on_precompile = false
+
 module UEFASchedules
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
