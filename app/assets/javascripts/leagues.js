@@ -4,7 +4,7 @@ $(function(){
 
 });
 
-function nextPagination() {
+let nextPagination = () => {
 $('#next-page').on('click', function(e){
   e.preventDefault()
 
